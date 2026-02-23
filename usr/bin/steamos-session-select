@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+# Session, gamescope or plasma
+SESSION="${1:-gamescope}"
+
+die() { echo >&2 "!! $*"; exit 1; }
 
 case "$1" in
     'persistent')
