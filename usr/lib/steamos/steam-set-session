@@ -14,6 +14,10 @@ esac
 # Session, gamescope or gnome
 SESSION="${1:-gamescope-session}"
 
+if [[ ! -d "$(dirname "$CONF_FILE")" ]]; then
+    mkdir -p "$(dirname "$CONF_FILE")"
+fi
+
 # Use sed to avoid destructive changes to AccountService file
 PREV_SESSION=$(cat $CONF_FILE | grep -o -P '(?<=Session=).*')
 sed -i -e '0,/'"$PREV_SESSION"'/{s/'"$PREV_SESSION"'/'"$SESSION"'/g}' $CONF_FILE;
