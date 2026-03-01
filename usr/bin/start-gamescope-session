@@ -23,6 +23,10 @@ systemctl --user --wait start gamescope-session.target &
 wait
 logger Gamescope Session Ended - Performing Final Cleanup
 
+# Stop Apollo and netstickd services
+systemctl --user stop apollo.service
+systemctl --user stop netstickd.service
+
 # The 'wait' above blocks until gamescope-session.target stops
 # We want to wait until *everything* has finished. We know systemd will have
 # queued a stop job on graphical-session-pre aleady
