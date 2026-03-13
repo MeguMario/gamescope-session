@@ -20,6 +20,7 @@ case "$1" in
         pkexec /usr/lib/steamos/steam-set-session gnome
         steam -shutdown
         systemctl --user stop gamescope-session.target
+        loginctl terminate-user 1000;;
     *)
         [[ -n "$1" ]] && echo -e "Unknown session '$1'\n"
         cat <<EOF
